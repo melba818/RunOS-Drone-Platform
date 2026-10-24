@@ -1,0 +1,46 @@
+# CV Dataset Manager Backend Requirements
+
+# Core
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+
+# Image Processing
+Pillow>=10.0.0
+opencv-python>=4.8.0
+cv2-enumerate-cameras==1.3.2  # Windows camera names and backend indices
+numpy>=1.24.0
+
+# Data Formats
+PyYAML>=6.0
+pandas>=2.0.0
+
+# ML Models - Required for model downloading and training
+ultralytics>=8.1.0  # YOLO models - auto-installed if missing
+lap>=0.5.12         # Required by Ultralytics for multi-object tracking (ByteTrack, BoTSORT, etc.)
+# torch>=2.0.0  # Usually installed with ultralytics
+# torchvision>=0.15.0  # Built-in backbones (MobileNetV3 / ResNet50 / ConvNeXt)
+torchmetrics>=1.0  # Required by the DINOv3 torch.hub repo (built-in backbone)
+termcolor>=2.0     # Also required by the DINOv3 torch.hub repo
+# torchreid>=1.4.0  # Optional: enables the built-in OSNet x0.25 / OSNet-AIN x0.25 trunks.
+                   # Without it, import an OSNet .pth into 骨干网络 — it is rebuilt from
+                   # its own state dict, so no torchreid install is needed.
+
+# Segmentation Models (Optional)
+# segment-anything>=1.0  # SAM
+# sam2>=0.1.0  # SAM 2
+
+# RF-DETR custom color and flip augmentation
+albumentations==2.0.8
+
+# System Monitoring (Optional but recommended)
+psutil>=5.9.0
+nvidia-ml-py>=12.0.0  # GPU utilization stats (pynvml) — NVIDIA only
+
+# Utilities
+tqdm>=4.65.0
+requests>=2.31.0
+aiofiles>=23.0.0
+paramiko>=3.5,<5  # Compute-node SSH/SFTP
+certifi>=2024.0.0  # CA bundle for SSL on macOS Python installs

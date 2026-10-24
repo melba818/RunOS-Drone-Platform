@@ -1,0 +1,310 @@
+[
+  {
+    "value": "yolov8n",
+    "label": "YOLOv8 Nano",
+    "params": "3.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8s",
+    "label": "YOLOv8 Small",
+    "params": "11.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8m",
+    "label": "YOLOv8 Medium",
+    "params": "25.9M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8l",
+    "label": "YOLOv8 Large",
+    "params": "43.7M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8x",
+    "label": "YOLOv8 XLarge",
+    "params": "68.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8n-seg",
+    "label": "YOLOv8n Seg",
+    "params": "3.4M",
+    "taskType": "segmentation",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8s-seg",
+    "label": "YOLOv8s Seg",
+    "params": "11.8M",
+    "taskType": "segmentation",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8m-seg",
+    "label": "YOLOv8m Seg",
+    "params": "27.3M",
+    "taskType": "segmentation",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8n-cls",
+    "label": "YOLOv8n Cls",
+    "params": "2.7M",
+    "taskType": "classification",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov8s-cls",
+    "label": "YOLOv8s Cls",
+    "params": "6.4M",
+    "taskType": "classification",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov9n",
+    "label": "YOLOv9 Nano",
+    "params": "2.0M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov9s",
+    "label": "YOLOv9 Small",
+    "params": "7.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov9m",
+    "label": "YOLOv9 Medium",
+    "params": "20.1M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov9c",
+    "label": "YOLOv9 Compact",
+    "params": "25.5M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov9e",
+    "label": "YOLOv9 Extended",
+    "params": "57.8M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10n",
+    "label": "YOLOv10 Nano",
+    "params": "2.3M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10s",
+    "label": "YOLOv10 Small",
+    "params": "7.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10m",
+    "label": "YOLOv10 Medium",
+    "params": "15.4M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10b",
+    "label": "YOLOv10 Balanced",
+    "params": "19.1M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10l",
+    "label": "YOLOv10 Large",
+    "params": "24.4M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolov10x",
+    "label": "YOLOv10 XLarge",
+    "params": "29.5M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11n",
+    "label": "YOLO11 Nano",
+    "params": "2.6M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11s",
+    "label": "YOLO11 Small",
+    "params": "9.4M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11m",
+    "label": "YOLO11 Medium",
+    "params": "20.1M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11l",
+    "label": "YOLO11 Large",
+    "params": "25.3M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11x",
+    "label": "YOLO11 XLarge",
+    "params": "56.9M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11n-seg",
+    "label": "YOLO11n Seg",
+    "params": "2.9M",
+    "taskType": "segmentation",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11s-seg",
+    "label": "YOLO11s Seg",
+    "params": "10.1M",
+    "taskType": "segmentation",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11n-cls",
+    "label": "YOLO11n Cls",
+    "params": "1.6M",
+    "taskType": "classification",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo11s-cls",
+    "label": "YOLO11s Cls",
+    "params": "5.6M",
+    "taskType": "classification",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo12n",
+    "label": "YOLO12 Nano",
+    "params": "2.6M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo12s",
+    "label": "YOLO12 Small",
+    "params": "9.3M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo12m",
+    "label": "YOLO12 Medium",
+    "params": "20.2M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo12l",
+    "label": "YOLO12 Large",
+    "params": "26.4M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "yolo12x",
+    "label": "YOLO12 XLarge",
+    "params": "59.1M",
+    "taskType": "detection",
+    "arch": "YOLO"
+  },
+  {
+    "value": "rtdetr-l",
+    "label": "RT-DETR Large",
+    "params": "32M",
+    "taskType": "detection",
+    "arch": "RT-DETR"
+  },
+  {
+    "value": "rtdetr-x",
+    "label": "RT-DETR XLarge",
+    "params": "67M",
+    "taskType": "detection",
+    "arch": "RT-DETR"
+  },
+  {
+    "value": "rtdetrv2_r18vd",
+    "label": "RT-DETRv2 R18 (Small)",
+    "params": "20M",
+    "taskType": "detection",
+    "arch": "RT-DETRv2"
+  },
+  {
+    "value": "rtdetrv2_r34vd",
+    "label": "RT-DETRv2 R34 (Medium)",
+    "params": "31M",
+    "taskType": "detection",
+    "arch": "RT-DETRv2"
+  },
+  {
+    "value": "rtdetrv2_r50vd",
+    "label": "RT-DETRv2 R50 (Large)",
+    "params": "42M",
+    "taskType": "detection",
+    "arch": "RT-DETRv2"
+  },
+  {
+    "value": "rtdetrv2_r101vd",
+    "label": "RT-DETRv2 R101 (XLarge)",
+    "params": "76M",
+    "taskType": "detection",
+    "arch": "RT-DETRv2"
+  },
+  {
+    "value": "rfdetr_base",
+    "label": "RF-DETR Base",
+    "params": "29M",
+    "taskType": "detection",
+    "arch": "RF-DETR"
+  },
+  {
+    "value": "rfdetr_medium",
+    "label": "RF-DETR Medium",
+    "params": "33M",
+    "taskType": "detection",
+    "arch": "RF-DETR"
+  },
+  {
+    "value": "rfdetr_large",
+    "label": "RF-DETR Large",
+    "params": "128M",
+    "taskType": "detection",
+    "arch": "RF-DETR"
+  }
+]

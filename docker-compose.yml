@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: runos-api:latest
+    environment:
+      RUNOS_AUTH_MODE: ${RUNOS_AUTH_MODE:-local}
+      RUNOS_ADMIN_USER: ${RUNOS_ADMIN_USER:-admin}
+      RUNOS_ADMIN_PASSWORD: ${RUNOS_ADMIN_PASSWORD:-runos-demo}
+      RUNOS_DATA_ROOT: /data
+      RUNOS_SKIP_RUNTIME_INSTALL: "1"
+    volumes:
+      - runos-data:/data
+    networks:
+      - runos
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: runos-web:latest
+    environment:
+      BACKEND_URL: http://api:8010
+      RUNOS_STANDALONE: "1"
+      PORT: "4000"
+      HOSTNAME: "0.0.0.0"
+    depends_on:
+      - api
+    ports:
+      - "127.0.0.1:${RUNOS_PORT:-19000}:4000"
+      - "127.0.0.1:${RUNOS_PORT:-19000}:4000"
+    networks:
+      - runos
+
+volumes:
+  runos-data:
+
+networks:
+  runos:

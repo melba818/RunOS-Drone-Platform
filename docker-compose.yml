@@ -28,8 +28,7 @@ services:
     depends_on:
       - api
     ports:
-      - "127.0.0.1:${RUNOS_PORT:-19000}:4000"
-      - "127.0.0.1:${RUNOS_PORT:-19000}:4000"
+      - "${RUNOS_BIND:-127.0.0.1}:${RUNOS_PORT:-19000}:4000"
     networks:
       - runos
 

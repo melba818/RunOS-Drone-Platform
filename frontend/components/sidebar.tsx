@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { VisosLogo } from "@/components/ui/visos-logo"
 import {
   Settings,
   Database,
@@ -272,7 +271,7 @@ export function Sidebar({ activeView, setActiveView, selectedDataset, isOpen = f
       {/* Brand */}
       {(!embedded || isOpen) && (
         <div className="relative px-5 pt-5 pb-4 flex items-center justify-between">
-          {!embedded && <VisosLogo size={36} showText={true} />}
+          {/* Standalone follows the portal-embedded look: no top-left brand mark */}
           {/* Mobile close button */}
           {isOpen && (
             <button

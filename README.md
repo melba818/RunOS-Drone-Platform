@@ -48,7 +48,8 @@ backend/    FastAPI 后端（app/，uvicorn :8010）
 | --- | --- | --- |
 | `RUNOS_AUTH_MODE` | `local` 或 `nexushive` | `local` |
 | `RUNOS_ADMIN_USER` / `RUNOS_ADMIN_PASSWORD` | 本地管理员账号 | `admin` / `runos-demo` |
-| `RUNOS_PORT` | 前端发布端口（仅本机回环） | `19000` |
+| `RUNOS_PORT` | 前端发布端口 | `19000` |
+| `RUNOS_BIND` | 前端绑定地址（默认只绑本机回环；局域网访问时填本机局域网 IP） | `127.0.0.1` |
 | `RUNOS_DATA_ROOT` | 后端数据目录（容器内） | `/data` |
 
 ## 说明与限制

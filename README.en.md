@@ -29,6 +29,9 @@ LLM workloads run on them:
   or key authentication.
 - Compute-node credentials can only be managed from the local RunOS instance.
 
+
+![Compute nodes](docs/screenshots/compute-nodes.png)
+
 ### LLM auto-annotation
 
 Let a vision LLM label your data, then review the results before applying
@@ -43,6 +46,9 @@ them to the dataset:
 - Job results, logs, and raw outputs are all viewable, replacing pure manual
   annotation at much lower cost.
 
+
+![LLM auto-annotation](docs/screenshots/vlm.png)
+
 ### LLM detection
 
 Describe the target in natural language and let the model return detection
@@ -55,6 +61,9 @@ conclusions directly:
   single-image inference are also available.
 - Local YOLOE model status and VLX-Seek node connectivity are visible in the
   UI, with a clear notice when something is not configured yet.
+
+
+![LLM detection](docs/screenshots/lmm.png)
 
 ## Features
 
@@ -76,6 +85,11 @@ Screenshots and descriptions of the sign-in page and every view are in
 [docs/pages-tour.en.md](docs/pages-tour.en.md) (taken in an empty-data
 environment; pages that need a dataset show a "no dataset selected"
 placeholder; Chinese version: [docs/pages-tour.md](docs/pages-tour.md)).
+
+
+![Sign-in page](docs/screenshots/login.png)
+
+![Home page](docs/screenshots/home.png)
 
 ## Quick start
 

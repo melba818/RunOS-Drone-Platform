@@ -44,47 +44,49 @@ export default function LoginPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#0f1115',
-        color: '#e6e6e6',
+        background: '#f5f8fc',
+        color: '#0f172a',
         fontFamily: 'system-ui, sans-serif',
       }}
     >
       <form
         onSubmit={onSubmit}
         style={{
-          width: 360,
-          padding: 28,
-          borderRadius: 12,
-          background: '#171a21',
+          width: 380,
+          padding: 32,
+          borderRadius: 16,
+          background: '#ffffff',
+          border: '1px solid #e2e8f0',
+          boxShadow: '0 1px 3px rgba(15, 23, 42, 0.08)',
           display: 'flex',
           flexDirection: 'column',
           gap: 14,
         }}
       >
-        <h1 style={{ margin: 0, fontSize: 22 }}>RunOS</h1>
-        <p style={{ margin: 0, color: '#9aa3b2', fontSize: 14 }}>
+        <h1 style={{ margin: 0, fontSize: 24, fontWeight: 600 }}>RunOS</h1>
+        <p style={{ margin: 0, color: '#64748b', fontSize: 14 }}>
           Standalone sign-in
         </p>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14 }}>
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, color: '#334155' }}>
           Username
           <input
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             autoComplete="username"
-            style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #2a2f3a', background: '#0f1115', color: '#e6e6e6' }}
+            style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #cbd5e1', background: '#ffffff', color: '#0f172a' }}
           />
         </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14 }}>
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, color: '#334155' }}>
           Password
           <input
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             autoComplete="current-password"
-            style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #2a2f3a', background: '#0f1115', color: '#e6e6e6' }}
+            style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #cbd5e1', background: '#ffffff', color: '#0f172a' }}
           />
         </label>
-        {error ? <p style={{ margin: 0, color: '#ff7a7a', fontSize: 13 }}>{error}</p> : null}
+        {error ? <p style={{ margin: 0, color: '#dc2626', fontSize: 13 }}>{error}</p> : null}
         <button
           type="submit"
           disabled={busy}
@@ -92,7 +94,7 @@ export default function LoginPage() {
         >
           {busy ? 'Signing in…' : 'Sign in'}
         </button>
-        <p style={{ margin: 0, color: '#9aa3b2', fontSize: 12 }}>
+        <p style={{ margin: 0, color: '#64748b', fontSize: 12 }}>
           Default demo account: admin / runos-demo. Change the password
           in .env before exposing this deployment.
         </p>

@@ -148,5 +148,4 @@ never connects to the backend directly. Data lives in the Docker volume
   CUDA.
 - Training jobs themselves need compute and model weights; the one-command
   deployment verifies the service chain, not training quality.
-- License: MIT, copyright placeholder `RunOS Authors`; the legal entity name
-  can be set before a formal release.
+- License: MIT, copyright RunZe Huang.

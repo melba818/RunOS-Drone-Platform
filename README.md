@@ -116,4 +116,4 @@ backend/    FastAPI 后端（app/，uvicorn :8010）
 - 后端镜像较大（PyTorch + Ultralytics 体系），首次构建需要一些时间；
   有 GPU 的机器可把后端换成 GPU 基础镜像以启用 CUDA。
 - 训练任务本身需要算力与模型权重；一键部署验证的是服务链路，不是训练效果。
-- 许可证：MIT，版权占位为 `RunOS Authors`，正式发布前可再定法律主体名。
+- 许可证：MIT，版权人 RunZe Huang。

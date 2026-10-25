@@ -11,9 +11,8 @@
 
 One flight brings back thousands of photos and hours of video. Then what? Data scattered across disks, labels clicked one by one, GPUs idling on other machines, a different tool for every step — the model hasn't started training and the time is already gone.
 
-RunOS cleans up that whole chain: datasets, annotation, training, and inference, all in one standalone service. It grew out of visos, keeping the solid data and annotation base and adding real-time multimodal recognition and LLM auto-annotation, targeting a DJI FlightHub 2-class experience.
+RunOS cleans up that whole chain: datasets, annotation, training, and inference, all in one standalone service. It grew out of visos, keeping the solid data and annotation base and adding real-time multimodal recognition and LLM auto-annotation.
 
-> Want a look before deploying? Static demo tour: https://melba818.github.io/runos-demo/ (screenshots only, not interactive; full features need a local deployment).
 
 ## Quick start
 
@@ -30,7 +29,7 @@ Open http://127.0.0.1:19000 and sign in with the account in `.env`
 
 - **Data that's ready to use**: import, browse, filter, merge, split, convert formats, snapshot versions — get the dataset in shape before talking about models.
 - **No more labeling everything by hand**: manual annotation as the base, AI assistance and LLM auto-annotation on top, human review before anything is applied — let the model do the grinding first pass.
-- **Compute wherever your GPUs are**: register every server you have as a compute node; training and inference jobs find free nodes on their own.
+- **Compute wherever your GPUs are**: register every server you have as a compute node; the terminal dispatches jobs, nodes run them, and results come back to the terminal.
 - **Detect before you train**: describe the target in one sentence and get conclusions, alerts, and evidence back — no need to label hundreds of images first.
 - **One service, not a toolchain**: datasets, annotation, training, and inference in a single self-hosted deployment.
 
@@ -38,7 +37,7 @@ Open http://127.0.0.1:19000 and sign in with the account in `.env`
 
 ### Compute nodes
 
-Your GPUs live on different machines — no more SSH-ing into each one:
+One server acts as the terminal (control center) and the rest provide compute: RunOS runs on the terminal and controls everything — training jobs are dispatched from the terminal to compute nodes, and results come back to the terminal when done. No more SSH-ing into each machine:
 
 - Connect over SSH or API. A node carries host, port, username, password or
   key authentication, a workdir, and a Python environment (system / conda /
@@ -66,7 +65,7 @@ Let the model do the tedious first pass; humans just check the work:
 - Job results, logs, and raw outputs are all viewable, replacing pure manual
   annotation at much lower cost.
 
-![LLM auto-annotation](docs/screenshots/vlm.png)
+![Auto-annotation](docs/screenshots/auto-annotation.png)
 
 ### LLM detection
 

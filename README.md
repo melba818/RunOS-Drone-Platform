@@ -1,8 +1,37 @@
+[English](README.en.md) | 简体中文
+
 # RunOS
 
 RunOS 是一个面向无人机与视觉数据的智能数据引擎：数据集管理、智能标注、模型训练与评测、算力节点调度，全部跑在一个可独立部署的服务里。
 
 它由 visos 演进而来：保留了 visos 的数据与标注底座，加入了实时的多模态大模型识别、大模型自动标注，并对标大疆司空 2（DJI FlightHub 2）的使用体验；同时内置算力节点，可以把不同服务器的算力统一调配起来做算法训练。
+
+## 重点功能
+
+### 算力节点
+
+把多台服务器注册为算力节点，训练、推理与云端大模型都跑在这些节点上：
+
+- 连接方式为 SSH 或 API；节点信息包括主机、端口、账号、密码或密钥认证、工作目录与 Python 环境（system / conda / venv）。
+- 添加节点后自动检测：连通性、操作系统、工作目录、GPU 列表，检测报告含错误信息；首次连接需确认主机指纹。
+- 内网服务器可经公网跳板机转发（本机 → 跳板机 → 内网服务器），跳板机同样支持密码或密钥认证。
+- 算力节点凭据操作仅允许本机 RunOS 访问。
+
+### 大模型自动标注
+
+用视觉大模型给数据自动打标签，人工复核后再应用到数据集：
+
+- 模型接入：通义千问 Qwen-VL（阿里云 DashScope，国内直连）、OpenAI GPT-4o、本地 vLLM、本地 Ollama，均为 OpenAI 兼容接口；另有 VLX-Seek 专用配置。
+- 流程：配置接口与类别 → 下发自动标注任务 → 任务可暂停、恢复、停止 → 逐条复核标注结果 → 应用到数据集。
+- 标注结果、任务日志与原始输出均可查看，低成本替代纯人工标注。
+
+### 大模型检测
+
+用自然语言描述目标，让大模型直接给出检测结论：
+
+- 例如“寻找水面上的船只”，由云端 VLX-Seek 检测器返回结论，并按规则告警。
+- 任务附带结果 JSON、结果视频、快照与告警证据（告警证据可恢复查看）；另有视频任务、逐帧与单图推理。
+- 本地 YOLOE 模型状态、VLX-Seek 算力节点连通性均可在页面查看；未配置时页面会明确提示。
 
 ## 功能
 
@@ -15,12 +44,13 @@ RunOS 是一个面向无人机与视觉数据的智能数据引擎：数据集�
 
 ## 界面巡览
 
-登录页与全部视图的截图及功能说明见 [docs/pages-tour.md](docs/pages-tour.md)（空数据环境下截取，需要数据集的页面显示“未选择数据集”占位）。
+登录页与全部视图的截图及功能说明见 [docs/pages-tour.md](docs/pages-tour.md)（空数据环境下截取，需要数据集的页面显示“未选择数据集”占位；英文版见 [docs/pages-tour.en.md](docs/pages-tour.en.md)）。
 
 ## 快速开始
 
-```bash
+```
 cp .env.example .env   # 先改掉演示密码
+
 docker compose up -d --build
 ```
 
@@ -43,7 +73,6 @@ backend/    FastAPI 后端（app/，uvicorn :8010）
 - **local（默认）**：独立部署的本地单管理员登录。账号密码来自 `.env` 的
   `RUNOS_ADMIN_USER` / `RUNOS_ADMIN_PASSWORD`；会话为 HMAC 签名 token，
   签名密钥首次启动时生成并保存在数据卷（`.session_secret`），重启不失效。
-  仅在 RunOS 作为 RunHive 一部分运行时使用。
 
 ## 配置
 
@@ -62,12 +91,3 @@ backend/    FastAPI 后端（app/，uvicorn :8010）
   有 GPU 的机器可把后端换成 GPU 基础镜像以启用 CUDA。
 - 训练任务本身需要算力与模型权重；一键部署验证的是服务链路，不是训练效果。
 - 许可证：MIT，版权占位为 `RunOS Authors`，正式发布前可再定法律主体名。
-
-## English summary
-
-RunOS is a standalone intelligent data engine for drone and vision data:
-dataset management, smart annotation (including LLM-powered auto-annotation),
-model training and evaluation, and compute-node orchestration across servers.
-It evolved from visos, adds real-time multimodal LLM recognition, and targets
-a DJI FlightHub 2-class user experience. `docker compose up -d --build`,
-then open http://127.0.0.1:19000 (demo account `admin / runos-demo`).

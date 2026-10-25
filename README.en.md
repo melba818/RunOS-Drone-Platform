@@ -2,21 +2,43 @@
 
 # RunOS
 
-RunOS is a standalone intelligent data engine for drone and vision data:
-dataset management, smart annotation, model training and evaluation,
-and compute-node orchestration across servers, all in one self-hosted service.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/melba818/RunOS-Drone-Platform)](https://github.com/melba818/RunOS-Drone-Platform/stargazers)
 
-It evolved from visos: it keeps the visos data and annotation base, adds
-real-time multimodal LLM recognition and LLM-powered auto-annotation, and
-targets a DJI FlightHub 2-class user experience. Compute nodes let you pool
-the GPUs of several servers for training jobs.
+**Drone data in, working models out — in one self-hosted service.**
+
+![Home page](docs/screenshots/home.png)
+
+One flight brings back thousands of photos and hours of video. Then what? Data scattered across disks, labels clicked one by one, GPUs idling on other machines, a different tool for every step — the model hasn't started training and the time is already gone.
+
+RunOS cleans up that whole chain: datasets, annotation, training, and inference, all in one standalone service. It grew out of visos, keeping the solid data and annotation base and adding real-time multimodal recognition and LLM auto-annotation, targeting a DJI FlightHub 2-class experience.
+
+> Want a look before deploying? Static demo tour: https://melba818.github.io/runos-demo/ (screenshots only, not interactive; full features need a local deployment).
+
+## Quick start
+
+```bash
+cp .env.example .env   # change the demo password first
+
+docker compose up -d --build
+```
+
+Open http://127.0.0.1:19000 and sign in with the account in `.env`
+(demo account `admin / runos-demo`).
+
+## Why RunOS
+
+- **Data that's ready to use**: import, browse, filter, merge, split, convert formats, snapshot versions — get the dataset in shape before talking about models.
+- **No more labeling everything by hand**: manual annotation as the base, AI assistance and LLM auto-annotation on top, human review before anything is applied — let the model do the grinding first pass.
+- **Compute wherever your GPUs are**: register every server you have as a compute node; training and inference jobs find free nodes on their own.
+- **Detect before you train**: describe the target in one sentence and get conclusions, alerts, and evidence back — no need to label hundreds of images first.
+- **One service, not a toolchain**: datasets, annotation, training, and inference in a single self-hosted deployment.
 
 ## Highlights
 
 ### Compute nodes
 
-Register several servers as compute nodes; training, inference, and cloud
-LLM workloads run on them:
+Your GPUs live on different machines — no more SSH-ing into each one:
 
 - Connect over SSH or API. A node carries host, port, username, password or
   key authentication, a workdir, and a Python environment (system / conda /
@@ -29,30 +51,26 @@ LLM workloads run on them:
   or key authentication.
 - Compute-node credentials can only be managed from the local RunOS instance.
 
-
 ![Compute nodes](docs/screenshots/compute-nodes.png)
 
 ### LLM auto-annotation
 
-Let a vision LLM label your data, then review the results before applying
-them to the dataset:
+Let the model do the tedious first pass; humans just check the work:
 
-- Providers: Qwen-VL (Alibaba Cloud DashScope), OpenAI GPT-4o, local vLLM,
-  and local Ollama, all through OpenAI-compatible APIs; plus a dedicated
-  VLX-Seek configuration.
+- Providers: Qwen-VL (Alibaba Cloud DashScope, direct connection in China),
+  OpenAI GPT-4o, local vLLM, and local Ollama, all through OpenAI-compatible
+  APIs; plus a dedicated VLX-Seek configuration.
 - Flow: configure the endpoint and classes → launch an auto-annotation job
   → pause, resume, or stop the job → review each annotation → apply to the
   dataset.
 - Job results, logs, and raw outputs are all viewable, replacing pure manual
   annotation at much lower cost.
 
-
 ![LLM auto-annotation](docs/screenshots/vlm.png)
 
 ### LLM detection
 
-Describe the target in natural language and let the model return detection
-conclusions directly:
+Want boats on the water? Don't label hundreds of boats and train a model first — just ask:
 
 - For example, "find boats on the water": the cloud VLX-Seek detector returns
   conclusions and raises alerts by rule.
@@ -61,7 +79,6 @@ conclusions directly:
   single-image inference are also available.
 - Local YOLOE model status and VLX-Seek node connectivity are visible in the
   UI, with a clear notice when something is not configured yet.
-
 
 ![LLM detection](docs/screenshots/lmm.png)
 
@@ -86,21 +103,9 @@ Screenshots and descriptions of the sign-in page and every view are in
 environment; pages that need a dataset show a "no dataset selected"
 placeholder; Chinese version: [docs/pages-tour.md](docs/pages-tour.md)).
 
-
 ![Sign-in page](docs/screenshots/login.png)
 
 ![Home page](docs/screenshots/home.png)
-
-## Quick start
-
-```
-cp .env.example .env   # change the demo password first
-
-docker compose up -d --build
-```
-
-Open http://127.0.0.1:19000 and sign in with the account in `.env`
-(demo account `admin / runos-demo`).
 
 ## Architecture
 

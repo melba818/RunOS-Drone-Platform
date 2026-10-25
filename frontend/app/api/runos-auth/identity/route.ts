@@ -8,7 +8,7 @@ const BACKEND_URL = (process.env.BACKEND_URL || 'http://127.0.0.1:8010').replace
 /** Validate the existing browser session without waiting for a workspace worker to start. */
 export async function GET(request: NextRequest) {
   const token = request.cookies.get('runos_session')?.value
-  if (!token) return NextResponse.json({ detail: 'RunHive sign-in required' }, { status: 401 })
+  if (!token) return NextResponse.json({ detail: 'RunOS sign-in required' }, { status: 401 })
 
   try {
     const upstream = await fetch(`${BACKEND_URL}/api/auth/me`, {

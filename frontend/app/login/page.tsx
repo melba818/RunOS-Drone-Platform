@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 /**
- * Standalone sign-in page. Used only when the backend runs in local
- * auth mode; the portal ticket flow (RunHive mode) does not use it.
+ * Standalone sign-in page for the local admin account.
  */
 export default function LoginPage() {
   const router = useRouter()

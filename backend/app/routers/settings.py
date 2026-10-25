@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, Request
 
 from config import settings
 from schemas.common import SettingsConfig
-from core.nexushive import read_account_settings, write_account_settings
+from core.account_settings import read_account_settings, write_account_settings
 
 router = APIRouter()
 
@@ -18,7 +18,7 @@ def _managed_path(value: str | None, fallback: Path, *, shared_models: bool = Fa
     shared = settings.PLATFORM_MODELS_DIR.resolve()
     allowed_shared = shared_models and (candidate == shared or shared in candidate.parents)
     if not allowed_shared and candidate != root and root not in candidate.parents:
-        raise ValueError("RunOS paths must stay inside this RunHive account's data directory")
+        raise ValueError("RunOS paths must stay inside this workspace's data directory")
     return candidate
 
 
@@ -27,7 +27,7 @@ async def get_settings(request: Request):
     try:
         stored = await asyncio.to_thread(read_account_settings, request.state.admin_id)
     except RuntimeError as exc:
-        raise HTTPException(status_code=503, detail="RunHive configuration service is unavailable") from exc
+        raise HTTPException(status_code=503, detail="RunOS settings storage is unavailable") from exc
 
     if stored:
         defaults = {
@@ -82,7 +82,7 @@ async def update_settings(config: SettingsConfig, request: Request):
     try:
         saved = await asyncio.to_thread(write_account_settings, request.state.admin_id, settings._app_settings)
     except RuntimeError as exc:
-        raise HTTPException(status_code=503, detail="RunOS settings were not saved to RunHive") from exc
+        raise HTTPException(status_code=503, detail="RunOS settings were not saved") from exc
 
     settings._app_settings.update(saved)
     return {"success": True, "settings": settings._app_settings}

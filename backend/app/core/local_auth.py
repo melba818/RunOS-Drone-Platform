@@ -1,16 +1,11 @@
 """Standalone local authentication for RunOS.
 
-This module is the standalone counterpart of ``core.nexushive``. It
-provides the same function names (``issue_session``,
-``verify_session``, ``token_from_request``) so ``main.py`` can select
-the auth backend with the ``RUNOS_AUTH_MODE`` environment variable:
+It provides the session functions (``issue_session``,
+``verify_session``, ``token_from_request``) used by ``main.py`` and
+the other routers:
 
-- ``RUNOS_AUTH_MODE=local`` (default in the standalone deployment):
-  username/password login against a single admin account configured
+- username/password login against a single admin account configured
   through ``RUNOS_ADMIN_USER`` / ``RUNOS_ADMIN_PASSWORD``.
-- ``RUNOS_AUTH_MODE=nexushive``: the original RunHive portal ticket
-  flow (``core.nexushive``). Only useful when RunOS runs embedded
-  inside a RunHive deployment.
 
 Sessions are HMAC-SHA256 signed tokens, valid for 8 hours. The
 signing secret is persisted to a file (default

@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SettingsProvider } from '@/lib/settings-context'
 import { Toaster } from '@/components/ui/sonner'
-import { RunHiveAuthGate } from '@/components/runhive-auth-gate'
+import { LocalAuthGate } from '@/components/local-auth-gate'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -39,12 +39,12 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <RunHiveAuthGate>
+          <LocalAuthGate>
             <SettingsProvider>
               {children}
               <Toaster richColors position="bottom-right" />
             </SettingsProvider>
-          </RunHiveAuthGate>
+          </LocalAuthGate>
         </ThemeProvider>
         <Analytics />
       </body>

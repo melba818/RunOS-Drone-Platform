@@ -39,14 +39,12 @@ backend/    FastAPI 后端（app/，uvicorn :8010）
 - **local（默认）**：独立部署的本地单管理员登录。账号密码来自 `.env` 的
   `RUNOS_ADMIN_USER` / `RUNOS_ADMIN_PASSWORD`；会话为 HMAC 签名 token，
   签名密钥首次启动时生成并保存在数据卷（`.session_secret`），重启不失效。
-- **nexushive**：对接 RunHive 门户票据登录（`RUNOS_AUTH_MODE=nexushive`），
   仅在 RunOS 作为 RunHive 一部分运行时使用。
 
 ## 配置
 
 | 变量 | 说明 | 默认 |
 | --- | --- | --- |
-| `RUNOS_AUTH_MODE` | `local` 或 `nexushive` | `local` |
 | `RUNOS_ADMIN_USER` / `RUNOS_ADMIN_PASSWORD` | 本地管理员账号 | `admin` / `runos-demo` |
 | `RUNOS_PORT` | 前端发布端口 | `19000` |
 | `RUNOS_BIND` | 前端绑定地址（默认只绑本机回环；局域网访问时填本机局域网 IP） | `127.0.0.1` |

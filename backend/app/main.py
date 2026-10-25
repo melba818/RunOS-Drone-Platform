@@ -29,14 +29,8 @@ from routers import compute_inference
 from routers import vlm as vlm_router
 from routers import lmm as lmm_router
 from routers import autoannot_v1
-import os as _os
-_AUTH_MODE = _os.environ.get("RUNOS_AUTH_MODE", "local").strip().lower()
-if _AUTH_MODE == "nexushive":
-    from routers import nexushive_auth
-    from core.nexushive import token_from_request, verify_session
-else:
-    from routers import local_auth
-    from core.local_auth import token_from_request, verify_session
+from routers import local_auth
+from core.local_auth import token_from_request, verify_session
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -95,17 +89,17 @@ app.add_middleware(
 @app.middleware("http")
 async def require_session(request: Request, call_next):
     path = request.url.path
-    public_paths = {"/api/health", "/api/auth/exchange", "/api/auth/me", "/api/auth/login"}
+    public_paths = {"/api/health", "/api/auth/me", "/api/auth/login"}
     if path.startswith("/api/") and path not in public_paths:
         try:
             claims = verify_session(token_from_request(request))
         except ValueError:
-            return JSONResponse({"detail": "RunOS sign-in required" if _AUTH_MODE != "nexushive" else "RunHive sign-in required"}, status_code=401)
+            return JSONResponse({"detail": "RunOS sign-in required"}, status_code=401)
 
         admin_id = int(claims.get("sub", 0))
         tenant_admin_id = int(os.environ.get("RUNOS_OWNER_ADMIN_ID", "1"))
         if admin_id != tenant_admin_id:
-            return JSONResponse({"detail": "This RunOS workspace is assigned to a different RunHive account"}, status_code=403)
+            return JSONResponse({"detail": "This RunOS workspace is assigned to a different account"}, status_code=403)
         request.state.admin_id = admin_id
 
     return await call_next(request)
@@ -135,10 +129,7 @@ app.include_router(vlm_router.router)
 app.include_router(lmm_router.router)
 # Auto Label V1：VLX + Qwen 双 Teacher 并行检测 / 双向交叉校验 / ACCEPT·REVIEW
 app.include_router(autoannot_v1.router)
-if _AUTH_MODE == "nexushive":
-    app.include_router(nexushive_auth.router)
-else:
-    app.include_router(local_auth.router)
+app.include_router(local_auth.router)
 
 
 @app.get("/")

@@ -50,7 +50,7 @@ from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field, SecretStr
 
 from config import settings
-from core.nexushive import token_from_request, verify_session
+from core.local_auth import token_from_request, verify_session
 from lmm import config as lmm_config
 from lmm import hub, registry
 from lmm.detectors.base_detector import DetectorError
@@ -1067,7 +1067,7 @@ async def task_ws(websocket: WebSocket, task_id: str) -> None:
     try:
         claims = verify_session(token_from_request(websocket))
     except ValueError:
-        await websocket.close(code=4401, reason="RunHive sign-in required")
+        await websocket.close(code=4401, reason="RunOS sign-in required")
         return
     if int(claims.get("sub", 0)) != int(os.environ.get("RUNOS_OWNER_ADMIN_ID", "1")):
         await websocket.close(code=4403, reason="RunOS workspace account mismatch")

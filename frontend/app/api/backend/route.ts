@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
   const endpoint = searchParams.get("endpoint") || ""
   const token = request.cookies.get("runos_session")?.value
   if (!token || !endpoint.startsWith("/api/")) {
-    return NextResponse.json({ detail: "RunHive sign-in required" }, { status: 401 })
+    return NextResponse.json({ detail: "RunOS sign-in required" }, { status: 401 })
   }
   
   try {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
   const endpoint = searchParams.get("endpoint") || ""
   const token = request.cookies.get("runos_session")?.value
   if (!token || !endpoint.startsWith("/api/")) {
-    return NextResponse.json({ detail: "RunHive sign-in required" }, { status: 401 })
+    return NextResponse.json({ detail: "RunOS sign-in required" }, { status: 401 })
   }
   
   try {

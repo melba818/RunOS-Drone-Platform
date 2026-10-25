@@ -5,7 +5,6 @@ services:
       dockerfile: backend/Dockerfile
     image: runos-api:latest
     environment:
-      RUNOS_AUTH_MODE: ${RUNOS_AUTH_MODE:-local}
       RUNOS_ADMIN_USER: ${RUNOS_ADMIN_USER:-admin}
       RUNOS_ADMIN_PASSWORD: ${RUNOS_ADMIN_PASSWORD:-runos-demo}
       RUNOS_DATA_ROOT: /data

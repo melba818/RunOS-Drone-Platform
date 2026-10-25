@@ -1,13 +1,12 @@
 """Standalone local sign-in endpoints for RunOS.
 
-Mirrors the response shapes of ``routers.nexushive_auth`` so the
-frontend needs no changes between auth modes:
+Response shapes:
 
 - ``POST /api/auth/login``  -> ``{access_token, token_type,
   expires_in, account}``
 - ``GET  /api/auth/me``     -> ``{admin_id, username}``
 
-Only included when ``RUNOS_AUTH_MODE=local`` (see ``main.py``).
+Included by ``main.py`` as the only sign-in backend.
 """
 
 from typing import Any

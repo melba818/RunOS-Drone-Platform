@@ -6,10 +6,9 @@ export const dynamic = 'force-dynamic'
 const BACKEND_URL = (process.env.BACKEND_URL || 'http://127.0.0.1:8010').replace(/\/$/, '')
 
 /**
- * Standalone login proxy. Only active when the backend runs in local
- * auth mode (RUNOS_AUTH_MODE=local). Forwards the credentials to the
- * backend and stores the returned session token in the same
- * `runos_session` cookie the ticket-exchange flow uses.
+ * Standalone login proxy. Forwards the credentials to the backend
+ * and stores the returned session token in the `runos_session`
+ * cookie used across the app.
  */
 export async function POST(request: NextRequest) {
   let body: { username?: unknown; password?: unknown }

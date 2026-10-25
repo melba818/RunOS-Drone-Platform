@@ -16,7 +16,7 @@ async function proxy(request: NextRequest, context: { params: Promise<{ segments
   }
 
   const token = request.cookies.get('runos_session')?.value
-  if (!token) return NextResponse.json({ detail: 'RunHive sign-in required' }, { status: 401 })
+  if (!token) return NextResponse.json({ detail: 'RunOS sign-in required' }, { status: 401 })
 
   let backendUrl: string
   try {
